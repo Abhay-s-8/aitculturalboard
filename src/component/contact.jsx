@@ -35,12 +35,12 @@ const Contact = (props) => {
       )
       .then(
         () => {
-          setStatus("✅ Thank you! We'll get in touch soon.");
+          setStatus(" Thank you! We'll get in touch soon.");
           setFormData({ name: "", email: "", phone: "", message: "" });
         },
         (error) => {
           console.error(error);
-          setStatus("❌ Failed to send. Please try again later.");
+          setStatus(" Failed to send. Please try again later.");
         }
       )
       .finally(() => setLoading(false));
@@ -88,7 +88,7 @@ const Contact = (props) => {
         />
 
         <button type="submit" disabled={loading}>
-          {loading ? "⏳ Sending..." : "✨ Submit"}
+          {loading ? "⏳ Sending..." : " Submit"}
         </button>
       </form>
 
