@@ -1,23 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./AITBoard.css";
 
-export default function AITBoard(props) {
-  const adminEmail = "entc"; 
-  const [currentUserEmail, setCurrentUserEmail] = useState(""); 
+import { db, auth } from "../firebaseConfig";
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  orderBy,
+  serverTimestamp,
+} from "firebase/firestore";
 
-  const defaultAnnouncements = [
-    {
-      id: 1,
-      title: "Cultural Fest 2K25",
-      message: "Join us for the AIT Cultural Board Fest on 25th September!",
-      date: "2025-09-10",
-    }
-  ];
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
-  const [announcements, setAnnouncements] = useState(() => {
-    const stored = localStorage.getItem("aitBoardAnnouncements");
-    return stored ? JSON.parse(stored) : defaultAnnouncements;
-  });
+const ADMIN_EMAIL = "culturalboardait85@gmail.com";
+
+export default function AITBoard() {
+  const [announcements, setAnnouncements] = useState([]);
+  const [user, setUser] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [newAnnouncement, setNewAnnouncement] = useState({
     title: "",
@@ -25,47 +33,93 @@ export default function AITBoard(props) {
     date: "",
   });
 
-  useEffect(() => {
-    localStorage.setItem("aitBoardAnnouncements", JSON.stringify(announcements));
-  }, [announcements]);
+  // Google provider
+  const provider = new GoogleAuthProvider();
 
-  const addAnnouncement = () => {
-    if (!newAnnouncement.title || !newAnnouncement.date) return;
-    const newItem = {
-      id: announcements.length > 0 ? announcements[announcements.length - 1].id + 1 : 1,
-      ...newAnnouncement,
-    };
-    setAnnouncements([...announcements, newItem]);
+  // Login
+  const login = async () => {
+    await signInWithPopup(auth, provider);
+  };
+
+  // Logout
+  const logout = async () => {
+    await signOut(auth);
+    setUser(null);
+    setIsAdmin(false);
+  };
+
+  // Auth listener (SAFE)
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setIsAdmin(currentUser?.email === ADMIN_EMAIL);
+    });
+
+    return () => unsub();
+  }, []);
+
+  // Read announcements (PUBLIC)
+  useEffect(() => {
+    const q = query(
+      collection(db, "announcements"),
+      orderBy("createdAt", "desc")
+    );
+
+    const unsub = onSnapshot(q, (snap) => {
+      setAnnouncements(
+        snap.docs.map((d) => ({ id: d.id, ...d.data() }))
+      );
+    });
+
+    return () => unsub();
+  }, []);
+
+  // Add (ADMIN ONLY)
+  const addAnnouncement = async () => {
+    if (!isAdmin) return alert("Admin only");
+
+    await addDoc(collection(db, "announcements"), {
+      title: newAnnouncement.title,
+      message: newAnnouncement.message,
+      date: newAnnouncement.date,
+      createdAt: serverTimestamp(),
+    });
+
     setNewAnnouncement({ title: "", message: "", date: "" });
   };
 
-  const deleteAnnouncement = (id) => {
-    setAnnouncements(announcements.filter((item) => item.id !== id));
+  // Delete (ADMIN ONLY)
+  const deleteAnnouncement = async (id) => {
+    if (!isAdmin) return;
+    await deleteDoc(doc(db, "announcements", id));
   };
 
   return (
-    <div className="ait-board" style={{ background: props.mode ? " " : "#dededeff" , color:props.mode ? "#ffffff" : "#000"}}>
+    <div className="ait-board">
       <h2>Announcements</h2>
 
-      {/* Mock login for admin access */}
-      <div style={{ marginBottom: "15px", textAlign: "center" }}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={currentUserEmail}
-          onChange={(e) => setCurrentUserEmail(e.target.value)}
-          style={{ padding: "8px", borderRadius: "6px", marginRight: "10px" }}
-        />
-        <span style={{ color: currentUserEmail === adminEmail ? "#0f0" : "#f00" }}>
-          {currentUserEmail === adminEmail ? "Admin Access" : "Normal User"}
-        </span>
-      </div>
+      <div className="auth-container">
+  {!user ? (
+    <button className="auth-btn" onClick={login}>
+      Login with Google
+    </button>
+  ) : (
+    <>
+      <p>
+        {user.email}
+        {isAdmin && <span className="admin-badge">ADMIN</span>}
+      </p>
+      <button className="auth-btn" onClick={logout}>
+        Logout
+      </button>
+    </>
+  )}
+</div>
 
-      {/* Add Form - only visible to admin */}
-      {currentUserEmail === adminEmail && (
+
+      {isAdmin && (
         <div className="add-form">
           <input
-            type="text"
             placeholder="Title"
             value={newAnnouncement.title}
             onChange={(e) =>
@@ -73,7 +127,6 @@ export default function AITBoard(props) {
             }
           />
           <input
-            type="text"
             placeholder="Message"
             value={newAnnouncement.message}
             onChange={(e) =>
@@ -91,26 +144,21 @@ export default function AITBoard(props) {
         </div>
       )}
 
-      {/* List */}
-      <div className="announcement-list">
-        {announcements.map((item) => (
-          <div key={item.id} className="announcement-card">
-            <div className="announcement-date">{item.date}</div>
-            <div className="announcement-content">
-              <h3>{item.title}</h3>
-              <p>{item.message}</p>
-            </div>
-            {currentUserEmail === adminEmail && (
-              <button
-                className="delete-btn"
-                onClick={() => deleteAnnouncement(item.id)}
-              >
-                ❌ Delete
-              </button>
-            )}
-          </div>
-        ))}
-      </div>
+      {announcements.map((a) => (
+        <div key={a.id} className="announcement-card">
+          <b>{a.title}</b>
+          <p>{a.message}</p>
+          <small>{a.date}</small>
+
+          {isAdmin && (
+            <button onClick={() => deleteAnnouncement(a.id)}>
+              Delete
+            </button>
+          )}
+        </div>
+        
+      ))}
     </div>
+    
   );
 }
