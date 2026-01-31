@@ -85,7 +85,7 @@ body {
 }
 
 /* ---------- Mobile View (phones) ---------- */
-@media (max-width: 768px) {
+@media (max-width: 468px) {
 
   .hero1 {
     height: 100vh;
