@@ -10,12 +10,15 @@
   margin: 0;
   font-family: Freeman ;
       box-sizing: border-box;
+      scroll-behavior: smooth;
+      
+      
 }
 
 body {
-  overflow: auto;          /* scrolling enabled */
-  scrollbar-color: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  overflow: auto;          
+  scrollbar-color: none;  
+  -ms-overflow-style: none; 
 }
 
 body::-webkit-scrollbar {
@@ -26,7 +29,11 @@ body {
   background-color: black;
   
 }
-
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
 .hero1 {
   background: url(./IMAGE/personal.png) no-repeat center center;
   background-size: cover;
