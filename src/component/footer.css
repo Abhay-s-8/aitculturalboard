@@ -1,0 +1,215 @@
+/* ---------- GLOBAL ---------- */
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* ---------- FOOTER BASE ---------- */
+.footer {
+  padding: 40px 20px;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: 0.5rem;
+  font-size: 0.875em;
+}
+
+.footer-link {
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0dcaf0; /* Bootstrap info color */
+  text-decoration: underline;
+}
+
+/* ---------- DARK MODE ---------- */
+.footer.dark {
+  background: #111;
+  color: #eee;
+}
+
+.footer.dark .footer-section p {
+  color: #bbb;
+}
+
+.footer.dark .footer-section ul li a {
+  color: #ffffff;
+}
+
+.footer.dark .footer-section ul li a:hover {
+  color: #323232;
+  transform: translateX(4px);
+}
+
+/* ---------- LIGHT MODE ---------- */
+.footer.light {
+  background: #dededeff;
+  color: #000;
+}
+
+.footer.light .footer-section p {
+  color: #333;
+}
+
+.footer.light .footer-section ul li a {
+  color: #3e3d3d;
+}
+
+.footer.light .footer-section ul li a:hover {
+  color: #ff6f00;
+  transform: translateX(4px);
+}
+
+/* ---------- FOOTER SECTIONS ---------- */
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+
+}
+
+
+
+.footer-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* ---------- SOCIAL ICONS ---------- */
+.social-links {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Instagram base color */
+#insta .social-icon {
+  color: #e1306c;
+}
+
+/* Hover animation only */
+#insta:hover .social-icon {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px #e1306c, 0 0 24px rgba(225, 48, 108, 0.6);
+}
+
+/* LinkedIn base color */
+#linked .social-icon {
+  color: #0077b5;
+}
+
+/* Hover animation only */
+#linked:hover .social-icon {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px #0077b5, 0 0 24px rgba(0, 119, 181, 0.6);
+}
+
+/* ---------- TOGGLE SWITCH ---------- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switch:hover .slider {
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+}
+
+/* ---------- FOOTER BOTTOM ---------- */
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
+
+.footer.dark .footer-bottom {
+  color: #aaa;
+}
+
+.footer.light .footer-bottom {
+  color: #333;
+}

@@ -1,0 +1,48 @@
+body {
+  overflow-x: hidden; /* hides horizontal scrollbar */
+  overflow-y: auto;   /* allows vertical scroll if needed */
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  font-family: Freeman;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+  color: white;
+  background-color: rgb(53, 53, 53, 0.3);
+  position: relative;
+  top: 0;
+  transition: background-color 0.6s ease-in-out 0.1s;
+  /* z-index: 1000; */
+  font-size: larger;
+  margin-top: 0;
+  height: fit-content;
+}
+
+.navbar-black {
+  background-color: #000;
+}
+
+.bar img {
+  height: 50px;
+}
+
+.bar ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bar li {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.bar li:hover {
+    color: #5b5a5a;
+  font-style: italic;/* gold hover */
+}

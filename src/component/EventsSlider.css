@@ -1,0 +1,43 @@
+body {
+  overflow-x: hidden; /* hides horizontal scrollbar */
+  overflow-y: auto;   /* allows vertical scroll if needed */
+}
+
+.events-slider {
+  max-height: 0;                  /* hidden by default */
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+  background: rgba(0, 0, 0, 0.95); /* dark background */
+  color: white;
+  font-family: Freeman;            /* match navbar font */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;              /* sits below navbar */
+  z-index: 999;                    /* less than navbar */
+}
+
+.events-slider.show {
+  max-height: 500px; /* expand height when open */
+}
+
+
+
+/* list inside slider */
+.events-slider ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 2rem;
+}
+
+.events-slider li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-size: larger; /* consistent with navbar */
+}
+
+.events-slider li:hover {
+  color: #5b5a5a;
+  font-style: italic; /* same hover color as navbar */
+}

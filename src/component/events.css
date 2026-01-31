@@ -1,0 +1,81 @@
+body {
+  overflow-x: hidden; /* hides horizontal scrollbar */
+  overflow-y: auto;   /* allows vertical scroll if needed */
+}
+
+.events-container {
+  text-align: center;
+  padding: 70px 20px;
+
+  color: #eaeaea;
+  min-height: 100vh;
+}
+
+.events-title {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  letter-spacing: 4px;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff007f, #00e5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 2s infinite alternate ease-in-out;
+}
+
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.event-card {
+  /* background: #1e1e1e; */
+  border-radius: 16px;
+  padding: 22px;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0px 4px 12px rgba(0, 229, 255, 0.2);
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  background: #222831;
+  border-color: #ff007f; /* Hot pink border on hover */
+  box-shadow: 0px 8px 18px rgba(255, 0, 127, 0.4);
+}
+
+.event-img {
+  width: 100%;
+  max-width: 300px;   /* fixed max width */
+  height: 200px;      /* fixed height */
+  object-fit: cover;  /* ensures image fills the box without distortion */
+  border-radius: 12px;
+  margin-bottom: 14px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* centers the image inside card */
+}
+.event-card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ff007f; /* Hot pink */
+}
+
+.event-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #b3e5fc; /* Soft cyan for text */
+  opacity: 0.95;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0px 0px 15px #ff007f; }
+  to { text-shadow: 0px 0px 25px #00e5ff; }
+}

@@ -1,0 +1,17 @@
+.whole {
+    background-color: #000000;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.slick-dots li button:before {
+  color: white;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+  color: white;
+  opacity: 1;
+}
