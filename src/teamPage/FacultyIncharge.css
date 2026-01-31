@@ -1,0 +1,131 @@
+.faculty-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 90vw; /* changed from 100vw */
+  margin: 50px auto;
+  background: transparent;
+  padding: 30px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.faculty-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.faculty-img {
+  width: 100%;
+  max-width: 390px;
+  height: auto;
+  aspect-ratio: 390 / 450; /* maintain original ratio */
+  object-fit: cover;
+  border-radius: 15px;
+  flex-shrink: 0;
+}
+
+.faculty-info {
+  text-align: left;
+  max-width: 550px;
+  color: white;
+  flex: 1; /* allow info to grow */
+}
+
+.faculty-info h4 {
+  margin: 0;
+  font-size: 2vw; /* responsive font */
+}
+
+.faculty-info h2 {
+  margin: 8px 0 18px 0;
+  font-weight: 200;
+  font-size: 5vw; /* responsive font */
+  opacity: 0.85;
+}
+
+.faculty-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 1024px) {
+  .faculty-card {
+    gap: 30px;
+    padding: 25px;
+  }
+
+  .faculty-img {
+    max-width: 300px;
+  }
+
+  .faculty-info h4 {
+    font-size: 1.8rem;
+  }
+
+  .faculty-info h2 {
+    font-size: 4rem;
+  }
+
+  .faculty-info p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faculty-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .faculty-info {
+    text-align: center;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .faculty-img {
+    max-width: 250px;
+  }
+
+  .faculty-info h4 {
+    font-size: 1.5rem;
+  }
+
+  .faculty-info h2 {
+    font-size: 3rem;
+  }
+
+  .faculty-info p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .faculty-card {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .faculty-img {
+    max-width: 180px;
+  }
+
+  .faculty-info h4 {
+    font-size: 1.2rem;
+  }
+
+  .faculty-info h2 {
+    font-size: 2.2rem;
+  }
+
+  .faculty-info p {
+    font-size: 0.85rem;
+  }
+}
