@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Zuume Rough';
+  src: url('./font/fontspring-demo-zuumerough-bold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+*{
+  margin: 0;
+  font-family: Freeman ;
+      box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  overflow: auto;          /* scrolling enabled */
+  scrollbar-color: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body::-webkit-scrollbar {
+  display: none;           /* Chrome, Safari, Opera */
+}
+
+body {
+  background-color: black;
+  
+}
+
+.hero1 {
+  background: url(./IMAGE/personal.png) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+
+.hero1 h1{
+  font-family: 'Anton', sans-serif;
+  color: #fff;
+  letter-spacing: 8px;
+  font-weight: bold;
+  position: absolute;
+  font-size: 8rem;
+  bottom: 110px;
+  right: 200px;
+  animation: up1 1.25s 1 ease-in-out;
+}
+
+
+.hero1 h2{
+  font-family: 'Anton', sans-serif;
+  color: #fff;
+  font-size: 5.5rem;
+  letter-spacing: 8px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 30px;
+  right: 200px;
+  animation: up 1.25s 1 ease-in-out;
+}
+
+@keyframes up {
+  0%{
+    opacity: 0;
+    bottom: -100px;
+  }
+
+  100%{
+    opacity: 1;
+    bottom: 30px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes up1 {
+  0%{
+    opacity: 0;
+    bottom: -100px;
   }
-  to {
-    transform: rotate(360deg);
+
+  100%{
+    opacity: 1;
+    bottom: 110px;
   }
 }
+
+/* ---------- Mobile View (phones) ---------- */
+@media (max-width: 768px) {
+
+  .hero1 {
+    height: 100vh;
+    background-position: center;
+  }
+
+  .hero1 h1,
+  .hero1 h2 {
+    right: 50%;
+    transform: translateX(50%);
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  .hero1 h1 {
+    font-size: 6rem;
+    bottom: 150px;
+  }
+
+  .hero1 h2 {
+    font-size: 3.5rem;
+    bottom: 10px;
+  }
+}
+
+/* ---------- Very Small Devices ---------- */
+@media (max-width: 480px) {
+
+  .hero1 h1 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    bottom: 110px;
+  }
+
+  .hero1 h2 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    bottom: 70px;
+  }
+}
+
