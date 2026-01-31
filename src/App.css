@@ -85,7 +85,7 @@ body {
 }
 
 /* ---------- Mobile View (phones) ---------- */
-@media (max-width: 468px) {
+@media (max-width: 568px) {
 
   .hero1 {
     height: 100vh;
@@ -101,7 +101,7 @@ body {
   }
 
   .hero1 h1 {
-    font-size: 6rem;
+    font-size: 5.5rem;
     bottom: 150px;
   }
 
@@ -112,18 +112,29 @@ body {
 }
 
 /* ---------- Very Small Devices ---------- */
-@media (max-width: 480px) {
+@media (max-width: 400px) {
+
+  .hero1 {
+    height: 100vh;
+    background-position: center;
+  }
+
+  .hero1 h1,
+  .hero1 h2 {
+    right: 50%;
+    transform: translateX(50%);
+    text-align: center;
+    letter-spacing: 2px;
+  }
 
   .hero1 h1 {
-    font-size: 22px;
-    letter-spacing: 2px;
-    bottom: 110px;
+    font-size: 3.5rem;
+    bottom: 160px;
   }
 
   .hero1 h2 {
-    font-size: 16px;
-    letter-spacing: 2px;
-    bottom: 70px;
+    font-size: 2.5rem;
+    bottom: 10px;
   }
 }
 
