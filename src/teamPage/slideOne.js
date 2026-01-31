@@ -35,10 +35,9 @@ export default function SlideOne() {
     { src: s18, link: "https://www.instagram.com/account12" },
     { src: s19, link: "https://www.instagram.com/account13" },
     { src: s20, link: "https://www.instagram.com/account14" },
-    { src: s21, link: "https://www.instagram.com/account15" },
     { src: s22, link: "https://www.instagram.com/account16" },
     { src: s23, link: "https://www.instagram.com/account17" },
-    { src: s24, link: "https://www.instagram.com/account18" },
+
   ];
 
   return (
