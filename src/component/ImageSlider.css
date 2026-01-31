@@ -1,9 +1,11 @@
+/* ===== MAIN WRAPPER ===== */
 .whole {
-    background-color: #000000;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  background-color: #000000;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
+/* ===== SLICK DOTS (DEFAULT / DESKTOP) ===== */
 .slick-dots li button:before {
   color: white;
   font-size: 10px;
@@ -14,4 +16,44 @@
 .slick-dots li.slick-active button:before {
   color: white;
   opacity: 1;
+}
+
+/* ================================================= */
+/* ================= MOBILE OPTIMIZATION ============ */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+  /* Reduce vertical padding for mobile */
+  .whole {
+    padding-top: 25px;
+    padding-bottom: 30px;
+  }
+
+  /* Make dots easier to tap */
+  .slick-dots li {
+    margin: 0 6px;
+  }
+
+  .slick-dots li button:before {
+    font-size: 12px;       /* bigger dots */
+    opacity: 0.6;
+  }
+
+  .slick-dots li.slick-active button:before {
+    font-size: 14px;       /* highlight active dot */
+    opacity: 1;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+  .whole {
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  .slick-dots {
+    bottom: -10px; /* pull dots closer */
+  }
 }

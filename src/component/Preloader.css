@@ -1,27 +1,69 @@
+/* ===== PRELOADER WRAPPER ===== */
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: black; /* Fallback background */
+  inset: 0;                 /* replaces top/left/width/height */
+  background: #000;
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
+/* ===== VIDEO ===== */
 .preloader-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* ===== SKIP TEXT ===== */
 .skip-text {
   position: absolute;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   color: white;
   font-size: 14px;
   opacity: 0.8;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover (desktop) */
+.skip-text:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ================================================= */
+/* ================= MOBILE OPTIMIZATION ============ */
+/* ================================================= */
+
+@media (max-width: 768px) {
+  .skip-text {
+    font-size: 16px;          /* easier to read */
+    right: 16px;
+    bottom: 16px;
+    padding: 6px 10px;        /* larger tap area */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+  .skip-text {
+    font-size: 15px;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* SAFE AREA (iOS notch support) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .skip-text {
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    right: calc(12px + env(safe-area-inset-right));
+  }
 }
