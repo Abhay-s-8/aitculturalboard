@@ -54,7 +54,7 @@ export default function TeOne() {
 
       {images.map((src, index) => (
         <div key={index} className="circle-img">
-          <img src={src} alt={`Person ${index + 1}`} className="circle-img-inner" />
+          <img src={src} alt={`Person ${index + 1}`} className="circle-img-inner" loading="lazy" />
         </div>
       ))}
     </div>

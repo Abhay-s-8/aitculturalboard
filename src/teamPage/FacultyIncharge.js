@@ -9,6 +9,7 @@ export default function FacultyIncharge() {
         src= {image}
         alt="Faculty Incharge"
         className="faculty-img"
+        loading="lazy"
       />
       <div className="faculty-info">
         <h2>Dr. PREETI WARRIER</h2>

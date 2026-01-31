@@ -21,7 +21,7 @@ export default function Secretaries() {
     <div className="secretaries-container">
       {secretaries.map((sec, index) => (
         <div className="secretary-card" key={index}>
-          <img src={sec.img} alt={sec.name} className="secretary-img" />
+          <img src={sec.img} alt={sec.name} className="secretary-img"  loading="lazy"/>
           <div className="secretary-info">
             <h2>{sec.name}</h2>
             <h4>{sec.role}</h4>

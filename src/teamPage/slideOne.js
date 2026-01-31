@@ -45,7 +45,7 @@ export default function SlideOne() {
       {images.map((item, index) => (
         <div className="photo" key={index}>
           <a href={item.link} target="_blank" rel="noopener noreferrer">
-            <img src={item.src} alt={`Person ${index + 1}`} />
+            <img src={item.src} alt={`Person ${index + 1}`} loading="lazy"/>
           </a>
         </div>
       ))}

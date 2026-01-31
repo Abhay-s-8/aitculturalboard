@@ -48,6 +48,7 @@ const ImageSlider = (props) => {
               src={src}
               alt={`slide-${i + 1}`}
               style={{ width: '100%', height: 'auto', borderRadius: '10px' }}
+              loading="lazy"
             />
           </div>
         ))}
