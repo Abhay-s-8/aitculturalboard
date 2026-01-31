@@ -30,6 +30,7 @@ export default function Preloader({ onLoaded }) {
         ref={videoRef}
         autoPlay
         playsInline
+        muted
         onEnded={onLoaded}
         className="preloader-video"
       >
