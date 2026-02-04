@@ -9,10 +9,10 @@ export default function Preloader({ onLoaded }) {
       if (videoRef.current) {
         videoRef.current.pause();
       }
-      onLoaded(); // move to main website
+      onLoaded(); 
     };
 
-    // Listen for ANY user interaction
+
     window.addEventListener("click", skipPreloader);
     window.addEventListener("keydown", skipPreloader);
     window.addEventListener("touchstart", skipPreloader);

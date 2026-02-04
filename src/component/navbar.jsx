@@ -10,12 +10,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav   className={`bar ${showEvents ? "navbar-black bg-dark" : "navbar-light bg-light"}`}>
+      <nav   className={"bar navbar-light bg-light"}>
         <img src={logo} alt="logo" />
         <ul>
           <li onClick={() => {
             setShowContact(!showContact);
-            setShowEvents(false); // close events if open
+            setShowEvents(false); 
           }}>
             Contact-Us
           </li>
@@ -25,7 +25,7 @@ const Navbar = () => {
 
       
       <ContactQR show={showContact} />
-      <EventsSlider show={showEvents} />
+
     </>
   );
 };

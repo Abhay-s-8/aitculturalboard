@@ -31,7 +31,7 @@ export default function Footer(props) {
           </p>
         </div>
 
-        {/* Quick Links Section */}
+        {/* Quick Links Section
         <div
           className="footer-section"
           style={{ color: props.mode ? "#000" : "#fff" }}
@@ -59,7 +59,7 @@ export default function Footer(props) {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Contact Us Section (merged from my code) */}
         <div
