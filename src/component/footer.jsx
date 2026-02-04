@@ -2,6 +2,7 @@ import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./footer.css";
 import "./contact.jsx";
+import { Link } from "react-router-dom";
 
 export default function Footer(props) {
   return (
@@ -43,12 +44,12 @@ export default function Footer(props) {
               </a>
             </li>
             <li>
-              <a href="#" className="footer-link">
+              <a href="events.html" className="footer-link">
                 Events
               </a>
             </li>
             <li>
-              <a href="#" className="footer-link">
+              <a href="contact.html" className="footer-link">
                 Contact
               </a>
             </li>
@@ -118,8 +119,8 @@ export default function Footer(props) {
           </div>
         </div>
       </div>
-
-      {/* Dark/Light Mode Toggle */}
+{/* 
+     
       <div
         className="form-check form-switch"
         style={{ color: props.mode ? "#ffffff" : "#000" }}
@@ -136,7 +137,7 @@ export default function Footer(props) {
         <label style={{ marginLeft: "10px" }}>
           {props.mode ? "Light mode" : "Dark mode"}
         </label>
-      </div>
+      </div> */}
 
       {/* Footer Bottom */}
       <div

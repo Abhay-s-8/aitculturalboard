@@ -194,6 +194,7 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     text-align: center;
+
   }
 
   .footer-section {
@@ -211,5 +212,11 @@ input:checked + .slider:before {
 
   .footer-bottom {
     font-size: 12px;
+  }
+}
+@media (max-width: 768px) {
+  .footer{
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
   }
 }

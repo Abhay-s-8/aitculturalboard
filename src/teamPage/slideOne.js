@@ -14,10 +14,9 @@ import s17 from "../IMAGE/s17.png";
 import s18 from "../IMAGE/s18.png";
 import s19 from "../IMAGE/s19.png";
 import s20 from "../IMAGE/s20.png";
-import s21 from "../IMAGE/s21.png";
 import s22 from "../IMAGE/s22.png";
 import s23 from "../IMAGE/s23.png";
-import s24 from "../IMAGE/s24.png";
+
 
 export default function SlideOne() {
   const images = [

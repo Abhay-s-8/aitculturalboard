@@ -73,7 +73,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 280px) {
   .scroll-item {
     font-size: clamp(1.5rem, 5vw, 2rem);
   }

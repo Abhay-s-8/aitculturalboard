@@ -9,6 +9,7 @@ import AnnouncementBoard from "./component/AITBoard";
 import Contact from "./component/contact";
 import ScrollAnimation from "./component/ScrollAnimation";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState(true);
@@ -23,7 +24,7 @@ function App() {
   }
 
   return (
-    <div
+    <BrowserRouter
       className="App"
       style={{
         background: mode ? "#000000" : "#ffffff",
@@ -44,7 +45,7 @@ function App() {
         <h2 >2K25 - 26</h2>
       </div>
 
-      {/* IMAGE SLIDER */}
+      
       <div className="scroll">
         <ScrollAnimation>
           <ImageSlider mode={mode} />
@@ -56,7 +57,7 @@ function App() {
         <HorizontalSnap mode={mode} />
       </ScrollAnimation>
 
-      {/* EVENTS */}
+      
       <ScrollAnimation>
         <Events />
       </ScrollAnimation>
@@ -67,15 +68,16 @@ function App() {
       </ScrollAnimation>
 
       {/* CONTACT */}
+      
       <ScrollAnimation>
         <Contact mode={mode} />
       </ScrollAnimation>
 
-      {/* FOOTER */}
+      
       <ScrollAnimation>
 <Footer mode={mode} toggleMode={toggleMode}/>
       </ScrollAnimation>
-    </div>
+    </BrowserRouter>
   );
 }
 

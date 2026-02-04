@@ -19,15 +19,7 @@ const Navbar = () => {
           }}>
             Contact-Us
           </li>
-          <li onClick={() => {
-            setShowEvents(!showEvents);
-            setShowContact(false); 
-          }}>
-            Event's
-          </li>
-          <li>
-            
-          </li>
+
         </ul>
       </nav>
 
