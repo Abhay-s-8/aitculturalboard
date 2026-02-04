@@ -11,9 +11,9 @@ const ContactQR = ({ show }) => {
         target="_blank"
         rel="noreferrer"
         alt="Contact QR Code" />
-        <p>Scan this QR code to contact us</p>
-        </a>
         
+        </a>
+        <p>Scan this QR code to contact us</p>
       </div>
     </div>
   );
