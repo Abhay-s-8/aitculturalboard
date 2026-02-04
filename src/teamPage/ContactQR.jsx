@@ -6,12 +6,14 @@ const ContactQR = ({ show }) => {
   return (
     <div className={`contact-qr ${show ? "show" : ""}`}>
       <div className="qr-box">
+        <a href="https://www.instagram.com/culturalboard_ait/" target="_blank" rel="noreferrer">
         <img id="qqq" src={qr} 
-        href="https://www.instagram.com/culturalboard_ait/"
         target="_blank"
         rel="noreferrer"
         alt="Contact QR Code" />
         <p>Scan this QR code to contact us</p>
+        </a>
+        
       </div>
     </div>
   );
