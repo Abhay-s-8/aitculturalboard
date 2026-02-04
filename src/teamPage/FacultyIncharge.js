@@ -4,7 +4,9 @@ import "./FacultyIncharge.css";
 
 export default function FacultyIncharge() {
   return (
+    <a id="iii" href="https://www.aitpune.com/CulturalMusicClub.aspx" target="_blank" rel="noopener noreferrer">
     <div className="faculty-card">
+      
       <img
         src= {image}
         alt="Faculty Incharge"
@@ -16,6 +18,8 @@ export default function FacultyIncharge() {
         <h4>Cultural Board</h4>
         <h4>Faculty Incharge</h4>
       </div>
+      
     </div>
+    </a>
   );
 }

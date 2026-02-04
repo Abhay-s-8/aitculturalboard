@@ -12,6 +12,10 @@
   flex-wrap: wrap; /* allows wrapping on small screens */
 }
 
+#iii {
+  text-decoration: none; 
+}
+
 .faculty-card:hover {
   transform: translateY(-6px);
   background: rgba(255, 255, 255, 0.1);
