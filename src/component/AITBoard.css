@@ -19,6 +19,10 @@ body {
   background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
   border-radius: 18px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+
+}
+.ait-board:hover{
+animation: glow 0.75s ease-in-out 1 forwards;
 }
 
 /* ===== TITLE ===== */
@@ -218,5 +222,17 @@ body {
 
   .delete-btn {
     align-self: flex-end;
+  }
+}
+
+
+@keyframes glow {
+   from {
+    transform: scale(1);    
+    box-shadow: 0 0 5px rgba(0, 162, 255, 0);
+  }
+  to {
+    transform: scale(1.03);    
+    box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
   }
 }

@@ -39,6 +39,7 @@ const events = [
     title: "Amethyst",
     img: AMETHYST,
     desc: "The flagship cultural fest, full of vibrant competitions and shows.",
+    lin: "https://www.instagram.com/p/DGsSj-wsejE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   },
   {
     title: "Farewell",
@@ -70,7 +71,9 @@ const events = [
     <source src={event.video} />
   </video>
 ) : (
-  <img src={event.img} alt={event.title} className="event-img" />
+  <a href={event.lin || "/"} target="_blank" rel="noopener noreferrer">
+    <img src={event.img} alt={event.title} className="event-img" />
+  </a>
 )}
             <h3>{event.title}</h3>
             <p>{event.desc}</p>

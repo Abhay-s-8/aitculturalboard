@@ -141,8 +141,8 @@ export default function Footer(props) {
 
       {/* Footer Bottom */}
       <div
-        className="footer-bottom"
-        style={{ color: props.mode ? "#959494ff" : "#000" }}
+        className="footer-bottom " 
+        style={{ color: props.mode ? "#8B949E" : "#000" }}
       >
         © {new Date().getFullYear()} CULTURAL BOARD AIT. All rights reserved.
       </div>

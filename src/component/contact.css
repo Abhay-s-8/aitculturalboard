@@ -43,13 +43,10 @@ animation: glow 0.75s ease-in-out 1 forwards;
   background: linear-gradient(90deg, #ff007f, #00e5ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: glowText 2s infinite alternate ease-in-out;
+
 }
 
-@keyframes glowText {
-  from { text-shadow: 0px 0px 15px #ff007f; }
-  to { text-shadow: 0px 0px 25px #00e5ff; }
-}
+
 
 .contact-info {
   display: flex;

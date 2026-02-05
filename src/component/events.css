@@ -21,7 +21,7 @@ body {
   background: linear-gradient(90deg, #ff007f, #00e5ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: glowText 2s infinite alternate ease-in-out;
+
 }
 
 

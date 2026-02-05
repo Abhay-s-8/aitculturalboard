@@ -45,12 +45,7 @@ function App() {
         <h2 >2K25 - 26</h2>
       </div>
 
-      
-      <div className="scroll">
-        <ScrollAnimation>
-          <ImageSlider mode={mode} />
-        </ScrollAnimation>
-      </div>
+    
 
       {/* HORIZONTAL SNAP */}
       <ScrollAnimation direction="right">
@@ -61,6 +56,12 @@ function App() {
       <ScrollAnimation>
         <Events />
       </ScrollAnimation>
+
+      <div className="scroll">
+        <ScrollAnimation>
+          <ImageSlider mode={mode} />
+        </ScrollAnimation>
+      </div>
 
       {/* ANNOUNCEMENT BOARD */}
       <ScrollAnimation direction="left">

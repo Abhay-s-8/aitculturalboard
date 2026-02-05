@@ -152,7 +152,7 @@ export default function AITBoard() {
 
           {isAdmin && (
             <button onClick={() => deleteAnnouncement(a.id)}>
-              Delete
+            Delete
             </button>
           )}
         </div>
