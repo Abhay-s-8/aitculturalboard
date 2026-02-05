@@ -71,9 +71,10 @@ const events = [
     <source src={event.video} />
   </video>
 ) : (
-  <a href={event.lin || "/"} target="_blank" rel="noopener noreferrer">
+  event.lin ? (
+  <a href={event.lin || " "} target="_blank" rel="noopener noreferrer">
     <img src={event.img} alt={event.title} className="event-img" />
-  </a>
+  </a>):( <img src={event.img} alt={event.title} className="event-img" />)
 )}
             <h3>{event.title}</h3>
             <p>{event.desc}</p>

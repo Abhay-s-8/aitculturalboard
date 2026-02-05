@@ -10,8 +10,7 @@ import s3 from '../IMAGE/s3.png';
 import s4 from '../IMAGE/s4.png';
 import s5 from '../IMAGE/s5.png';
 import s6 from '../IMAGE/s6.png';
-import s34 from '../IMAGE/s34.jpg';
-import s35 from '../IMAGE/s35.jpg';
+
 
 const ImageSlider = (props) => {
   const images = [
@@ -21,8 +20,7 @@ const ImageSlider = (props) => {
     s4,
     s5,
     s6,
-    s34,
-    s35,
+
   ];
 
   const settings = {
