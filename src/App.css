@@ -1,10 +1,5 @@
-@font-face {
-  font-family: 'Zuume Rough';
-  src: url('./font/fontspring-demo-zuumerough-bold.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 *{
   margin: 0;
@@ -43,7 +38,7 @@ html, body {
 
 
 .hero1 h1{
-  font-family: 'Anton', sans-serif;
+  font-family:  'Anton', sans-serif;
   color: #fff;
   letter-spacing: 8px;
   font-weight: bold;

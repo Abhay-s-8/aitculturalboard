@@ -72,7 +72,7 @@ const events = [
   </video>
 ) : (
   event.lin ? (
-  <a href={event.lin || " "} target="_blank" rel="noopener noreferrer">
+  <a href={event.lin} target="_blank" rel="noopener noreferrer">
     <img src={event.img} alt={event.title} className="event-img" />
   </a>):( <img src={event.img} alt={event.title} className="event-img" />)
 )}
