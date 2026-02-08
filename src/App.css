@@ -3,9 +3,11 @@
 
 *{
   margin: 0;
-  font-family: 'Anton' !important;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  font-family: Freeman ;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      
+      
 }
 
 body {
@@ -15,7 +17,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  display: none;           
+  display: none;           /* Chrome, Safari, Opera */
 }
 
 body {
@@ -36,7 +38,7 @@ html, body {
 
 
 .hero1 h1{
-  font-family:  'Anton', sans-serif;
+  font-family:'Anton', sans-serif;
   color: #fff;
   letter-spacing: 8px;
   font-weight: bold;

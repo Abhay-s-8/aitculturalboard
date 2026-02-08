@@ -14,7 +14,7 @@ body {
   max-width: 1000px;
   margin: 30px auto;
   padding: 25px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif ;
   color: #fff;
   background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
   border-radius: 18px;
