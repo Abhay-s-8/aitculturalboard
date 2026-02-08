@@ -3,7 +3,7 @@ import "./slideOne.css";   // make sure CSS is imported
 import s7 from "../IMAGE/s7.png";
 import s8 from "../IMAGE/s8.png";
 import s9 from "../IMAGE/s9.png";
-import s10 from "../IMAGE/s10.png";
+// import s10 from "../IMAGE/s10.png";
 import s11 from "../IMAGE/s11.png";
 import s12 from "../IMAGE/s12.png";
 import s13 from "../IMAGE/s13.png";
@@ -23,7 +23,7 @@ export default function SlideOne() {
     { src: s7, link: "https://www.instagram.com/account1" },
     { src: s8, link: "https://www.instagram.com/account2" },
     { src: s9, link: "https://www.instagram.com/account3" },
-    { src: s10, link: "https://www.instagram.com/account4" },
+    // { src: s10, link: "https://www.instagram.com/account4" },
     { src: s11, link: "https://www.instagram.com/account5" },
     { src: s12, link: "https://www.instagram.com/account6" },
     { src: s13, link: "https://www.instagram.com/account7" },

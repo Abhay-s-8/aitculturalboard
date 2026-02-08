@@ -8,6 +8,8 @@ import Events from "./component/events";
 import AnnouncementBoard from "./component/AITBoard";
 import Contact from "./component/contact";
 import ScrollAnimation from "./component/ScrollAnimation";
+import Showcase from "./component/showcase";
+import BlurScroll from "./component/BlurScroll";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 
@@ -24,7 +26,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter
+    <div
       className="App"
       style={{
         background: mode ? "#000000" : "#ffffff",
@@ -51,8 +53,9 @@ function App() {
       <ScrollAnimation direction="right">
         <HorizontalSnap mode={mode} />
       </ScrollAnimation>
-
-      
+<ScrollAnimation direction="up">
+      <BlurScroll />
+</ScrollAnimation>
       <ScrollAnimation>
         <Events />
       </ScrollAnimation>
@@ -73,12 +76,15 @@ function App() {
       <ScrollAnimation>
         <Contact mode={mode} />
       </ScrollAnimation>
-
       
+      {/* <Showcase /> */}
+      
+      
+
       <ScrollAnimation>
 <Footer mode={mode} toggleMode={toggleMode}/>
       </ScrollAnimation>
-    </BrowserRouter>
+    </div>
   );
 }
 
