@@ -14,29 +14,43 @@
 }
 
 .scroll-item {
-  position: relative; 
+  position: relative;
   flex: 0 0 auto;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* Fix mobile vh issue */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(1rem, 3vw, 3rem); /* responsive text */
+  font-size: clamp(1.5rem, 6vw, 3rem);
   font-weight: bold;
   color: white;
   overflow: hidden;
 }
 
-/* Background image with reduced opacity */
+/* Background overlay */
 .scroll-item::before {
   content: "";
   position: absolute;
-  inset: 0; 
-  background: url(../IMAGE/22.png) no-repeat center center;
-  background-size: contain; 
-  opacity: 0.4; 
-  z-index: 0; 
+  inset: 0;
+  background: url('../IMAGE/22.png') center/contain no-repeat;
+  background-size: 80%;
+  opacity: 0.4;
+  z-index: 0;
 }
+
+
+.scroll-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+@media (max-width: 768px) {
+  .scroll-item::before {
+    background-size: 90%;
+  }
+}
+
 
 /* Text stays on top */
 .scroll-item span,
