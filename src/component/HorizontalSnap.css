@@ -66,6 +66,9 @@
 
 /* 📱 Responsive adjustments */
 @media (max-width: 1024px) {
+  body{
+    font-family: Freeman;
+  }
   .scroll-item span,
   .scroll-item div {
     font-size: clamp(2.5rem, 4vw, 4rem);
@@ -77,6 +80,9 @@
 }
 
 @media (max-width: 768px) {
+  body{
+    font-family: Freeman;
+  }
   .scroll-item {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
   }
@@ -88,6 +94,9 @@
 }
 
 @media (max-width: 280px) {
+  body{
+    font-family: Freeman;
+  }
   .scroll-item {
     font-size: clamp(1.5rem, 5vw, 2rem);
   }
