@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
-body{
-  font-family: 'Cinzel', serif !important;
-}
 
 .scroll-container {
   display: flex;
@@ -63,7 +60,7 @@ body{
 .scroll-item div {
   font-size: clamp(3rem, 5vw, 5rem); /* responsive */
   letter-spacing: clamp(3px, 1vw, 7px);
-  font-family: Freeman;
+  font-family:'Cinzel', serif !important;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -73,7 +70,7 @@ body{
 /* 📱 Responsive adjustments */
 @media (max-width: 1024px) {
   body{
-    font-family: Freeman;
+    font-family: 'Cinzel', serif !important;
   }
   .scroll-item span,
   .scroll-item div {
@@ -87,7 +84,7 @@ body{
 
 @media (max-width: 768px) {
   body{
-    font-family: Freeman;
+    font-family:  'Cinzel', serif !important;
   }
   .scroll-item {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
@@ -101,7 +98,7 @@ body{
 
 @media (max-width: 280px) {
   body{
-    font-family: Freeman;
+    font-family:  'Cinzel', serif !important;
   }
   .scroll-item {
     font-size: clamp(1.5rem, 5vw, 2rem);
