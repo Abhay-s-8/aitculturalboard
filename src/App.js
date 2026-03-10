@@ -10,6 +10,7 @@ import Contact from "./component/contact";
 import ScrollAnimation from "./component/ScrollAnimation";
 import Showcase from "./component/showcase";
 import BlurScroll from "./component/BlurScroll";
+import VisionMission from "./component/VisionMission"; // 1. Import the new component
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 
@@ -43,19 +44,24 @@ function App() {
         }}
       >
         <Navbar />
-        <h1 >CULTURAL BOARD</h1>
-        <h2 >2K25 - 26</h2>
+        <h1>CULTURAL BOARD</h1>
+        <h2>2K25 - 26</h2>
       </div>
 
-    
+      {/* 2. PLACE VISION & MISSION HERE */}
+      <ScrollAnimation direction="up">
+        <VisionMission mode={mode} />
+      </ScrollAnimation>
 
       {/* HORIZONTAL SNAP */}
       <ScrollAnimation direction="right">
         <HorizontalSnap mode={mode} />
       </ScrollAnimation>
-<ScrollAnimation direction="up">
-      <BlurScroll />
-</ScrollAnimation>
+
+      {/* ... rest of your code stays the same ... */}
+      <ScrollAnimation direction="up">
+        <BlurScroll />
+      </ScrollAnimation>
       <ScrollAnimation>
         <Events />
       </ScrollAnimation>
@@ -66,23 +72,16 @@ function App() {
         </ScrollAnimation>
       </div>
 
-      {/* ANNOUNCEMENT BOARD */}
       <ScrollAnimation direction="left">
         <AnnouncementBoard mode={mode} />
       </ScrollAnimation>
 
-      {/* CONTACT */}
-      
       <ScrollAnimation>
         <Contact mode={mode} />
       </ScrollAnimation>
       
-      {/* <Showcase /> */}
-      
-      
-
       <ScrollAnimation>
-<Footer mode={mode} toggleMode={toggleMode}/>
+        <Footer mode={mode} toggleMode={toggleMode}/>
       </ScrollAnimation>
     </div>
   );
