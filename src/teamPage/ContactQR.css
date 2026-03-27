@@ -5,7 +5,7 @@ body{
 .contact-qr {
   max-height: 0;
   position: relative;
-  z-index: 1110;
+  z-index: 999; 
   overflow: hidden;
   transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
 

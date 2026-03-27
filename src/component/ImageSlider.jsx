@@ -33,8 +33,8 @@ const ImageSlider = () => {
       <header className="journey-header">
         <h2 className="title-text">Our Journey</h2>
         <p className="description-text">
-          CulturalConnect began as a vision to connect communities through cultural events, 
-          transforming into a vibrant platform for sharing and celebrating heritage.
+Cultural Board AIT began as a vision to unite communities through meaningful cultural experiences,
+evolving into a dynamic platform that celebrates diversity, fosters creativity, and preserves rich traditions.
         </p>
       </header>
 
