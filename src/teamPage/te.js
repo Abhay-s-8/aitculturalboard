@@ -1,15 +1,15 @@
 import React from "react";
-import s25 from "../IMAGE/s25.png";
-import s26 from "../IMAGE/s26.png";
-import s27 from "../IMAGE/s27.png";
-import s28 from "../IMAGE/s28.png";
-import s29 from "../IMAGE/s29.png";
-import s30 from "../IMAGE/s30.png";
-import s31 from "../IMAGE/s31.png";
-import s32 from "../IMAGE/s32.png";
+import s7 from "../IMAGE/s7.webp";
+import s9 from "../IMAGE/s9.webp";
+import s11 from "../IMAGE/s11.webp";
+import s12 from "../IMAGE/s12.webp";
+import s13 from "../IMAGE/s13.webp";
+import s16 from "../IMAGE/s16.webp";
+import s22 from "../IMAGE/s22.webp";
+import s23 from "../IMAGE/s23.webp";
 
 export default function TeOne() {
-  const images = [s25, s26, s27, s28, s29, s30, s31, s32];
+  const images = [s7, s9, s11, s12, s13, s16, s22, s23];
 
   return (
     <div
@@ -17,11 +17,11 @@ export default function TeOne() {
         display: "grid",
         gridTemplateColumns: "repeat(4, minmax(200px, 1fr))",
         gap: "20px",
-        width: "90vw",
+        width: "100vw",
+        boxSizing: "border-box",
         minHeight: "100vh",
-        padding: "20px",
-        paddingTop: "60px",
-        backgroundColor: "black",
+        padding: "60px 8vw 20px",
+        backgroundColor: "transparent",
       }}
     >
       <style>
@@ -38,6 +38,7 @@ export default function TeOne() {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
             transition: transform 0.3s ease;
           }
 

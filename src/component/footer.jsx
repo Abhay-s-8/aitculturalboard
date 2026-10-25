@@ -2,13 +2,11 @@ import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./footer.css";
 import "./contact.jsx";
-import { Link } from "react-router-dom";
 
 export default function Footer(props) {
   return (
     <footer
       className={`footer ${props.mode ? "dark" : "light"}`}
-      style={{ background: props.mode ? "#212529" : "#dededeff" }}
     >
       <div className="footer-container">
         {/* Cultural Board Section */}

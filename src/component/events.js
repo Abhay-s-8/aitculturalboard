@@ -1,11 +1,12 @@
 import React from "react";
-import farewell from "../IMAGE/farewell.png";
-import AIT from "../IMAGE/AIT.png";
-import CHRIS from "../IMAGE/CHRIS.png";
-import NEW from "../IMAGE/NEW-YEAR.png";
-import DANCE from "../IMAGE/DANCE.png";
-import AMETHYST from "../IMAGE/AMETHYST.png";
+import farewell from "../IMAGE/farewell.webp";
+import AIT from "../IMAGE/AIT.webp";
+import CHRIS from "../IMAGE/CHRIS.webp";
+import NEW from "../IMAGE/NEW-YEAR.webp";
+import DANCE from "../IMAGE/DANCE.webp";
+import AMETHYST from "../IMAGE/AMETHYST.webp";
 
+import { Link } from "react-router-dom";
 import "./events.css";
 
 export default function Events(props) {
@@ -17,6 +18,8 @@ const events = [
   },
   {
     title: "Cultural Akriti",
+    to: "/aakriti",
+    featured: true,
     img: DANCE,
     desc: "A showcase of talent and creativity through cultural performances.",
   },
@@ -37,6 +40,7 @@ const events = [
   },
   {
     title: "Amethyst",
+    featured: true,
     img: AMETHYST,
     desc: "The flagship cultural fest, full of vibrant competitions and shows.",
     lin: "https://www.instagram.com/p/DGsSj-wsejE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
@@ -56,10 +60,11 @@ const events = [
 
   return (
     <div className="events-container"  style={{color:props.mode ? "#ffffff" : "#000"}}>
+      <span className="eyebrow">02 — Events</span>
       <h1 className="events-title">Our Events</h1>
       <div className="events-grid">
         {events.map((event, index) => (
-          <div className="event-card" style={{color:props.mode ? "#dededeff" : "#1e1e1e"}} key={index}>
+          <div className={`event-card${event.featured ? " is-featured" : ""}`} style={{color:props.mode ? "#dededeff" : "#1e1e1e"}} key={index}>
             {event.video ? (
   <video
     className="event-img"
@@ -71,13 +76,22 @@ const events = [
     <source src={event.video} />
   </video>
 ) : (
-  event.lin ? (
+  event.to ? (
+  <Link to={event.to} aria-label={`${event.title} - open the festival page`}>
+    <img src={event.img} alt={event.title} className="event-img" loading="lazy" />
+  </Link>):event.lin ? (
   <a href={event.lin} target="_blank" rel="noopener noreferrer">
-    <img src={event.img} alt={event.title} className="event-img" />
-  </a>):( <img src={event.img} alt={event.title} className="event-img" />)
+    <img src={event.img} alt={event.title} className="event-img" loading="lazy" />
+  </a>):( <img src={event.img} alt={event.title} className="event-img" loading="lazy" />)
 )}
+            {event.featured && <span className="event-tag">Festival</span>}
             <h3>{event.title}</h3>
             <p>{event.desc}</p>
+            {event.to && (
+              <Link to={event.to} className="event-more">
+                View festival photos &amp; events <span aria-hidden="true">→</span>
+              </Link>
+            )}
           </div>
         ))}
       </div>

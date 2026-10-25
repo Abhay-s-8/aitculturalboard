@@ -2,7 +2,7 @@
 /* ---------- GLOBAL ---------- */
 body {
   overflow-x: hidden;
-  overflow-y: hidden; /* allow scroll */
+  overflow-y: auto;
 }
 
 /* ---------- FOOTER BASE ---------- */
@@ -66,7 +66,7 @@ body {
 
 /* ---------- DARK MODE ---------- */
 .footer.dark {
-  background: #111;
+  background: var(--surface);
   color: #eee;
 }
 
@@ -84,8 +84,8 @@ body {
 
 /* ---------- LIGHT MODE ---------- */
 .footer.light {
-  background: #dededeff;
-  color: #000;
+  background: var(--surface);
+  color: var(--fg);
 }
 
 .footer.light .footer-section p {

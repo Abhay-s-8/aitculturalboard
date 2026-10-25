@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-body{
-    font-family:'Cinzel', serif !important;
-}
 .slideone-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

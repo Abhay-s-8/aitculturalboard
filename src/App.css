@@ -1,142 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-
-
-*{
-  margin: 0;
-  font-family: Freeman ;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      
-      
-}
-
+html,
 body {
-  overflow: auto;          
-  scrollbar-color: none;  
-  -ms-overflow-style: none; 
-}
-
-body::-webkit-scrollbar {
-  display: none;           /* Chrome, Safari, Opera */
-}
-
-body {
-  background-color: black;
-  
-}
-html, body {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden !important;
+  overflow-x: hidden;
 }
+
+/* ---------- HERO ---------- */
 .hero1 {
-  background: url(./IMAGE/personal.png) no-repeat center center;
-  background-size: cover;
-  height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + var(--space-3)) clamp(var(--space-2), 5vw, 80px) var(--space-4);
+  overflow: hidden;
+  isolation: isolate;
 }
 
-
-.hero1 h1{
-  font-family:'Anton', sans-serif;
-  color: #fff;
-  letter-spacing: 8px;
-  font-weight: bold;
+/* Photo layer: slow settle-in reveal; the overlay keeps text readable on any photo */
+.hero-bg {
   position: absolute;
-  font-size: 8rem;
-  bottom: 110px;
-  right: 200px;
-  animation: up1 1.25s 1 ease-in-out;
+  inset: 0;
+  z-index: -2;
+  background: url(./IMAGE/personal.webp) no-repeat center center / cover;
+  animation: settle 2.2s var(--ease) both;
 }
 
-
-.hero1 h2{
-  font-family: 'Anton', sans-serif;
-  color: #fff;
-  font-size: 5.5rem;
-  letter-spacing: 8px;
-  font-weight: bold;
+.hero1::before {
+  content: "";
   position: absolute;
-  bottom: 30px;
-  right: 200px;
-  animation: up 1.25s 1 ease-in-out;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(21, 21, 21, 0.96) 0%, rgba(21, 21, 21, 0.45) 50%, rgba(21, 21, 21, 0.7) 100%);
 }
 
-@keyframes up {
-  0%{
+.hero-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(252, 245, 238, 0.85);
+  margin-bottom: var(--space-2);
+  animation: rise var(--dur) var(--ease) both;
+}
+
+/* With the 3D model gone, the title takes the full width on one line */
+.hero1 h1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 0.22em;
+  color: var(--fg);
+  font-size: clamp(3.5rem, 12.5vw, 13rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  animation: rise 1s var(--ease) 0.1s both;
+}
+
+/* Second word is outlined – an editorial contrast, not an effect for its own sake */
+.hero1 h1 span:last-child {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--fg);
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(252, 245, 238, 0.25);
+  animation: rise 1s var(--ease) 0.3s both;
+}
+
+.hero1 h2 {
+  color: var(--accent);
+  font-size: var(--fs-hero-sub);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-3);
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #ff3344;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--fg);
+}
+
+.btn-ghost:hover {
+  background: var(--accent-soft);
+}
+
+/* Scroll cue */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-2);
+  width: 2px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--fg));
+  transform: translateX(-50%);
+  animation: cue 1.8s ease-in-out infinite;
+}
+
+@keyframes settle {
+  from { transform: scale(1.08); opacity: 0.4; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rise {
+  from {
     opacity: 0;
-    bottom: -100px;
+    transform: translateY(24px);
   }
-
-  100%{
+  to {
     opacity: 1;
-    bottom: 30px;
+    transform: translateY(0);
   }
 }
 
-@keyframes up1 {
-  0%{
-    opacity: 0;
-    bottom: -100px;
-  }
-
-  100%{
-    opacity: 1;
-    bottom: 110px;
-  }
+@keyframes cue {
+  0%, 100% { opacity: 0.2; transform: translateX(-50%) scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: translateX(-50%) scaleY(1); transform-origin: top; }
 }
 
-/* ---------- Mobile View (phones) ---------- */
-@media (max-width: 568px) {
+/* ---------- SECTION RHYTHM ---------- */
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
 
-  .hero1 {
-    height: 100vh;
-    background-position: center;
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .scroll-cue {
+    display: none;
   }
 
-  .hero1 h1,
-  .hero1 h2 {
-    right: 50%;
-    transform: translateX(50%);
-    text-align: center;
-    letter-spacing: 2px;
+  .hero-eyebrow {
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
   }
 
   .hero1 h1 {
-    font-size: 5.5rem;
-    bottom: 150px;
+    flex-direction: column;
+    font-size: clamp(3.5rem, 22vw, 6rem);
   }
 
-  .hero1 h2 {
-    font-size: 3.5rem;
-    bottom: 10px;
-  }
-}
-
-/* ---------- Very Small Devices ---------- */
-@media (max-width: 400px) {
-
-  .hero1 {
-    height: 100vh;
-    background-position: center;
+  .hero1 h1 span:last-child {
+    -webkit-text-stroke-width: 1.5px;
   }
 
-  .hero1 h1,
-  .hero1 h2 {
-    right: 50%;
-    transform: translateX(50%);
-    text-align: center;
-    letter-spacing: 2px;
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .hero1 h1 {
-    font-size: 3.5rem;
-    bottom: 160px;
+  .hero-cta {
+    width: 100%;
   }
 
-  .hero1 h2 {
-    font-size: 2.5rem;
-    bottom: 10px;
+  .hero-cta .btn {
+    flex: 1 1 100%;
   }
 }
 
+/* Anchor jumps should clear the fixed header */
+section[id],
+div[id] {
+  scroll-margin-top: var(--header-h);
+}

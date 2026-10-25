@@ -25,3 +25,21 @@
   font-size: 14px;
   opacity: 0.8;
 }
+
+.preloader-sound {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.preloader-sound:hover {
+  background: rgba(225, 29, 46, 0.8);
+}

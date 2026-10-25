@@ -3,86 +3,97 @@ import Navbar from "./component/navbar";
 import Preloader from "./component/Preloader";
 import HorizontalSnap from "./component/HorizontalSnap";
 import ImageSlider from "./component/ImageSlider";
+import GalleryBento from "./component/GalleryBento";
 import Footer from "./component/footer";
 import Events from "./component/events";
 import AnnouncementBoard from "./component/AITBoard";
 import Contact from "./component/contact";
 import ScrollAnimation from "./component/ScrollAnimation";
-import Showcase from "./component/showcase";
 import BlurScroll from "./component/BlurScroll";
-import VisionMission from "./component/VisionMission"; // 1. Import the new component
+import VisionMission from "./component/VisionMission";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+
+// The site is dark-only: every section is styled from the tokens in index.css.
+const MODE = true;
+
+// Show the intro video once per browser session, not on every reload.
+const hasSeenPreloader = () => {
+  try {
+    return sessionStorage.getItem("preloaded") === "1";
+  } catch {
+    return false;
+  }
+};
 
 function App() {
-  const [mode, setMode] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => !hasSeenPreloader());
 
-  const toggleMode = () => {
-    setMode(!mode);
+  const finishLoading = () => {
+    try {
+      sessionStorage.setItem("preloaded", "1");
+    } catch {
+      /* storage unavailable – just continue */
+    }
+    setLoading(false);
   };
 
   if (loading) {
-    return <Preloader onLoaded={() => setLoading(false)} />;
+    return <Preloader onLoaded={finishLoading} />;
   }
 
   return (
-    <div
-      className="App"
-      style={{
-        background: mode ? "#000000" : "#ffffff",
-        color: mode ? "#ffffff" : "#000000",
-      }}
-    >
-      
-      <div
-        className="hero1"
-        style={{
-          backgroundColor: "black",
-          padding: "10px",
-          margin: "0",
-        }}
-      >
-        <Navbar />
-        <h1>CULTURAL BOARD</h1>
-        <h2>2K25 - 26</h2>
-      </div>
+    <div className="App" id="top">
+      <Navbar />
 
-      {/* 2. PLACE VISION & MISSION HERE */}
-      <ScrollAnimation direction="up">
-        <VisionMission mode={mode} />
-      </ScrollAnimation>
+      <section className="hero1" aria-labelledby="hero-title">
+        <div className="hero-bg" aria-hidden="true"></div>
 
-      {/* HORIZONTAL SNAP */}
-      <ScrollAnimation direction="right">
-        <HorizontalSnap mode={mode} />
-      </ScrollAnimation>
+        <div className="hero-content">
+          <p className="hero-eyebrow">AIT Pune · Cultural &amp; Music Board</p>
+          <h1 id="hero-title">
+            <span>Cultural</span>
+            <span>Board</span>
+          </h1>
+          <div className="hero-meta">
+            <h2>2K26 - 27</h2>
+          </div>
+        </div>
 
-      {/* ... rest of your code stays the same ... */}
-      <ScrollAnimation direction="up">
-        <BlurScroll />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <Events />
-      </ScrollAnimation>
+        <span className="scroll-cue" aria-hidden="true"></span>
+      </section>
 
-      <div className="scroll">
-        <ScrollAnimation>
-          <ImageSlider mode={mode} />
+      <main>
+        <ScrollAnimation id="about">
+          <VisionMission mode={MODE} />
         </ScrollAnimation>
-      </div>
 
-      <ScrollAnimation direction="left">
-        <AnnouncementBoard mode={mode} />
-      </ScrollAnimation>
+        <ScrollAnimation id="team">
+          <HorizontalSnap mode={MODE} />
+        </ScrollAnimation>
 
-      <ScrollAnimation>
-        <Contact mode={mode} />
-      </ScrollAnimation>
-      
-      <ScrollAnimation>
-        <Footer mode={mode} toggleMode={toggleMode}/>
-      </ScrollAnimation>
+        <ScrollAnimation>
+          <BlurScroll />
+        </ScrollAnimation>
+
+        <ScrollAnimation id="events">
+          <Events />
+        </ScrollAnimation>
+
+        <ScrollAnimation id="gallery">
+          <ImageSlider mode={MODE} />
+          <GalleryBento />
+        </ScrollAnimation>
+
+        <ScrollAnimation id="notices">
+          <AnnouncementBoard mode={MODE} />
+        </ScrollAnimation>
+
+        <ScrollAnimation id="contact">
+          <Contact mode={MODE} />
+        </ScrollAnimation>
+      </main>
+
+      <Footer mode={MODE} />
     </div>
   );
 }

@@ -1,0 +1,20 @@
+.gb {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 96px) clamp(16px, 5vw, 80px) clamp(64px, 10vw, 128px);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.gb-title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gb-lead {
+  max-width: 52ch;
+  margin: 12px 0 32px;
+  color: var(--muted);
+  line-height: 1.7;
+}

@@ -5,32 +5,42 @@ import "slick-carousel/slick/slick-theme.css";
 import './ImageSlider.css';
 
 // Your image imports
-import s1 from '../IMAGE/s1.png';
-import s2 from '../IMAGE/s2.png';
-import s3 from '../IMAGE/s3.png';
-import s4 from '../IMAGE/s4.png';
-import s5 from '../IMAGE/s5.png';
-import s6 from '../IMAGE/s6.png';
+import s1 from '../IMAGE/s1.webp';
+import s2 from '../IMAGE/s2.webp';
+import s3 from '../IMAGE/s3.webp';
+import s4 from '../IMAGE/s4.webp';
+import s5 from '../IMAGE/s5.webp';
+import s6 from '../IMAGE/s6.webp';
 
 const ImageSlider = () => {
   const images = [s1, s2, s3, s4, s5, s6];
 
+  // Honour the visitor's reduced-motion preference: no autoplay, no slide animation
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   const settings = {
     dots: true,
     infinite: true,
-    speed: 800,
+    speed: reduceMotion ? 0 : 800,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: false,
+    autoplay: !reduceMotion,
+    autoplaySpeed: 3500,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    pauseOnDotsHover: true,
     arrows: false,
+    accessibility: true,
   };
 
   return (
     <div className="journey-container">
       {/* HEADER SECTION */}
       <header className="journey-header">
+        <span className="eyebrow">03 — Gallery</span>
         <h2 className="title-text">Our Journey</h2>
         <p className="description-text">
 Cultural Board AIT began as a vision to unite communities through meaningful cultural experiences,
@@ -45,9 +55,10 @@ evolving into a dynamic platform that celebrates diversity, fosters creativity, 
             <div key={i} className="slide-item">
               <img
                 src={src}
-                alt={`Experience ${i + 1}`}
+                alt={`Cultural Board AIT moment ${i + 1} of ${images.length}`}
                 className="slide-image"
-                loading="lazy"
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             </div>
           ))}

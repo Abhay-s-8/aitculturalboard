@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import SlideOne from "../teamPage/slideOne";
 import TeOne from "../teamPage/te";
 import FacultyIncharge from "../teamPage/FacultyIncharge";
 import Secretaries from "../teamPage/secretary";
@@ -15,8 +14,6 @@ export default function HorizontalSnap() {
     <Secretaries />,
     <span className="fade-text">TE MEMBER</span>,
     <TeOne />,
-    <span className="fade-text">JOINT SECRETARY</span>,
-    <SlideOne />,
   ];
 
   const scrollToIndex = (index) => {
@@ -51,12 +48,12 @@ export default function HorizontalSnap() {
   return (
     <div className="snap-wrapper">
       {/* LEFT BUTTON */}
-      <button className="snap-btn left" onClick={handlePrev}>
+      <button className="snap-btn left" onClick={handlePrev} aria-label="Previous team slide">
         ❮
       </button>
 
       {/* RIGHT BUTTON */}
-      <button className="snap-btn right" onClick={handleNext}>
+      <button className="snap-btn right" onClick={handleNext} aria-label="Next team slide">
         ❯
       </button>
 
@@ -64,12 +61,15 @@ export default function HorizontalSnap() {
       <div
         ref={containerRef}
         className="scroll-container"
+        tabIndex={0}
+        role="region"
+        aria-label="Cultural Board team"
       >
         {items.map((item, index) => (
           <div
-            className="scroll-item"
+            className={`scroll-item${item.type === "span" ? "" : " has-photos"}`}
             key={index}
-            style={{ backgroundColor: "#000" }}
+            style={{ backgroundColor: "var(--bg)" }}
           >
             {item}
           </div>

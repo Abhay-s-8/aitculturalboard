@@ -3,7 +3,7 @@ import "./EventsSlider.css";
 
 const events = [
   { title: "Fresher's Party" },
-  { title: "Cultural Akriti" },
+  { title: "Cultural Aakriti" },
   { title: "Christmas Celebration" },
   { title: "New Year" },
   { title: "AIT Day" },

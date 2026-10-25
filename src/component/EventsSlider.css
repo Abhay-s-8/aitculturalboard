@@ -9,7 +9,7 @@ body {
   transition: max-height 0.6s ease-in-out;
   background: rgba(0, 0, 0, 0.95); /* dark background */
   color: white;
-  font-family: Freeman;            /* match navbar font */
+  font-family: var(--font-body);            /* match navbar font */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   text-align: center;
   position: relative;              /* sits below navbar */

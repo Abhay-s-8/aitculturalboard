@@ -1,40 +1,38 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const ScrollAnimation = ({ children, direction = "up", delay = 0 }) => {
+// One consistent reveal for every section: fade + 24px rise, played once.
+// `direction` and `delay` are kept in the signature so existing callers still work.
+const ScrollAnimation = ({ children, delay = 0, id }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Toggle visibility on enter / exit
-        setVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
       },
-      {
-        threshold: 0.15,
-      }
+      { threshold: 0.1 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
-
-  const getTransform = () => {
-    if (visible) return "translate(0, 0)";
-    if (direction === "left") return "translateX(-60px)";
-    if (direction === "right") return "translateX(60px)";
-    return "translateY(60px)";
-  };
 
   return (
     <div
       ref={ref}
+      id={id}
       style={{
         opacity: visible ? 1 : 0,
-        transform: getTransform(),
-        transition: `opacity 1.5s ease, transform 1.5s cubic-bezier(0.22, 1, 0.36, 1)`,
+        transform: visible ? "none" : "translateY(24px)",
+        transition: "opacity var(--dur) var(--ease), transform var(--dur) var(--ease)",
         transitionDelay: `${delay}s`,
-        willChange: "opacity, transform",
       }}
     >
       {children}

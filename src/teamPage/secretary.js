@@ -1,6 +1,6 @@
 import React from "react";
-import img1 from "../IMAGE/444.png";
-import img2 from "../IMAGE/445.png"
+import img1 from "../IMAGE/444.webp";
+import img2 from "../IMAGE/445.webp"
 import "./secretary.css";
 
 export default function Secretaries() {

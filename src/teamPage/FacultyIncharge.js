@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../IMAGE/S33.png"
+import image from "../IMAGE/S33.webp"
 import "./FacultyIncharge.css";
 
 export default function FacultyIncharge() {

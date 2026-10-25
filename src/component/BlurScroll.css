@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 body {
   margin: 0;
-  background: black;
-  font-family:'Cinzel', serif !important;
+  background: var(--bg);
 }
 
 .container {
@@ -17,6 +15,7 @@ body {
 }
 
 .line {
+  font-family: var(--font-display);
   text-transform: uppercase;
   padding-bottom: 8px;
   letter-spacing: 4px;

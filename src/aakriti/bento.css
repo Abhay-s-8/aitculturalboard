@@ -1,0 +1,158 @@
+/* Shared photo-gallery styles: masonry fallback, bento grid, lightbox */
+/* ---------- MASONRY GALLERY ---------- */
+.ak-masonry {
+  columns: 3 260px;
+  column-gap: 14px;
+}
+
+.ak-photo {
+  display: block;
+  width: 100%;
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: zoom-in;
+  break-inside: avoid;
+}
+
+.ak-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s var(--ease), filter 0.3s var(--ease);
+}
+
+.ak-photo:hover img {
+  transform: scale(1.03);
+}
+
+/* ---------- BENTO GALLERY ---------- */
+.bento-wrap {
+  container-type: inline-size;
+}
+
+.bento {
+  --gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: calc((100cqw - 4 * var(--gap)) / 5);
+  gap: var(--gap);
+}
+
+.bento-tile {
+  position: relative;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: zoom-in;
+}
+
+.bento-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+
+.bento-tile:hover img,
+.bento-tile:focus-visible img {
+  transform: scale(1.06);
+}
+
+/* Slots: 4 small, tall, 2 small, big, 2 small, "+N" */
+.bento .t4 {
+  grid-column: 5;
+  grid-row: 1 / span 2;
+}
+
+.bento .t7 {
+  grid-column: 3 / span 2;
+  grid-row: 2 / span 2;
+}
+
+.bento-more img {
+  filter: brightness(0.45) blur(1px);
+}
+
+.bento-more span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4cqw, 2.6rem);
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+@container (max-width: 640px) {
+  .bento {
+    --gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: calc((100cqw - 2 * var(--gap)) / 3);
+    grid-auto-flow: dense;
+  }
+
+  .bento .t4 {
+    grid-column: auto;
+    grid-row: span 2;
+  }
+
+  .bento .t7 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .bento-tile {
+    border-radius: 14px;
+  }
+}
+
+
+/* ---------- LIGHTBOX ---------- */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 10, 10, 0.94);
+}
+
+.lb img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+.lb button {
+  position: absolute;
+  background: none;
+  border: 0;
+  color: var(--fg);
+  cursor: pointer;
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1.6rem;
+}
+
+.lb-close {
+  top: 12px;
+  right: 16px;
+  font-size: 2.4rem !important;
+}
+
+.lb-prev {
+  left: 8px;
+}
+
+.lb-next {
+  right: 8px;
+}
+

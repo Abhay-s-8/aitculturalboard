@@ -1,52 +1,209 @@
-body {
-  overflow-x: hidden; /* hides horizontal scrollbar */
-  overflow-y: auto;   /* allows vertical scroll if needed */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-2) var(--space-3);
+  transition: background-color 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.is-scrolled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: rgba(21, 21, 21, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: rgba(252, 245, 238, 0.08);
 }
 
 .bar {
   display: flex;
   align-items: center;
-  font-family: Freeman;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  color: white;
-  background-color: rgb(53, 53, 53, 0.3);
-  position: relative;
-  top: 0;
-  transition: background-color 0.6s ease-in-out 0.1s;
-  /* z-index: 1000; */
-  font-size: larger;
-  margin-top: 0;
-  height: 50px;
-width: 100%;
-max-width: 1000px;
-  margin: auto;
-  left: 0;
-  border-radius: 40px;
+  width: 100%;
+  max-width: 1280px;
+  min-height: 48px;
+  margin: 0 auto;
+  color: var(--fg);
 }
 
-.navbar-black {
-  background-color: #000;
+.bar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--fg);
+  text-decoration: none;
 }
 
-.bar img {
-  height: 50px;
+.bar-brand img {
+  height: 44px;
+  width: auto;
+}
+
+.bar-brand span {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .bar ul {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.25rem;
   margin: 0;
   padding: 0;
 }
 
-.bar li {
+.bar ul a,
+.bar ul button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px; /* comfortable tap target */
+  padding: 0 0.9rem;
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
-  transition: color 0.3s ease;
 }
 
-.bar li:hover {
-    color: #5b5a5a;
-  font-style: italic;/* gold hover */
+/* Underline slides in on hover and stays for the active section */
+.bar ul a::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 8px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+
+.bar ul a:hover::after,
+.bar ul a.is-active::after {
+  transform: scaleX(1);
+}
+
+.bar ul a.is-active {
+  color: #fff;
+}
+
+.bar .bar-contact {
+  margin-left: 0.5rem;
+  padding: 0 1.25rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  transition: background-color 0.3s var(--ease);
+}
+
+.bar .bar-contact:hover,
+.bar .bar-contact[aria-expanded="true"] {
+  background: var(--accent);
+}
+
+/* Hamburger – mobile only */
+.bar-toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.bar-toggle span,
+.bar-toggle span::before {
+  position: absolute;
+  left: 11px;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  transition: transform 0.3s var(--ease), top 0.3s var(--ease);
+}
+
+.bar-toggle span {
+  top: 21px;
+}
+
+.bar-toggle span::before {
+  content: "";
+  left: 0;
+  top: -7px;
+}
+
+.bar-toggle[aria-expanded="true"] span {
+  transform: rotate(45deg);
+}
+
+.bar-toggle[aria-expanded="true"] span::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 860px) {
+  .bar-toggle {
+    display: block;
+  }
+
+  .bar ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--space-3) var(--space-3);
+    background: rgba(21, 21, 21, 0.97);
+    border-bottom: 1px solid rgba(252, 245, 238, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s;
+  }
+
+  .bar ul.open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .bar ul a,
+  .bar ul button {
+    width: 100%;
+    min-height: 52px;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(252, 245, 238, 0.08);
+  }
+
+  .bar ul a::after {
+    display: none;
+  }
+
+  .bar ul a.is-active {
+    color: var(--accent);
+  }
+
+  .bar .bar-contact {
+    margin: var(--space-2) 0 0;
+    justify-content: center;
+    border-bottom: 1.5px solid var(--accent);
+  }
+}
+
+@media (max-width: 420px) {
+  .bar-brand span {
+    font-size: 1.05rem;
+  }
 }

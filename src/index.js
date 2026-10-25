@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// The Aakriti festival pages are loaded only when visited.
+const AakritiPage = lazy(() => import('./aakriti/AakritiPage'));
+const EventPage = lazy(() => import('./aakriti/EventPage'));
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Suspense fallback={<div style={{ minHeight: '100vh', background: '#151515' }} />}>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/aakriti" element={<AakritiPage />} />
+          <Route path="/aakriti/:slug" element={<EventPage />} />
+          <Route path="*" element={<App />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
