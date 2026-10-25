@@ -55,6 +55,25 @@ const Contact = () => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Start fresh: empty form and no leftover status message.
+  // Fired when someone opens Contact Us again (see navbar.jsx) and a few seconds after sending.
+  const resetForm = () => {
+    setFormData({ name: "", email: "", phone: "", message: "" });
+    setStatus("");
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("contact:reset", resetForm);
+    return () => window.removeEventListener("contact:reset", resetForm);
+  }, []);
+
+  useEffect(() => {
+    if (!status) return undefined;
+    const t = window.setTimeout(() => setStatus(""), 6000);
+    return () => window.clearTimeout(t);
+  }, [status]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };

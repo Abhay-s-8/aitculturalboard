@@ -96,6 +96,8 @@ const Navbar = () => {
               className="bar-contact"
               aria-expanded={showContact}
               onClick={() => {
+                // Ask the contact form to start fresh each time Contact Us is opened
+                window.dispatchEvent(new Event("contact:reset"));
                 setShowContact(!showContact);
                 setMenuOpen(false);
               }}
