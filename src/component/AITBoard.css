@@ -223,3 +223,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+.board-error {
+  flex-basis: 100%;
+  margin: 0;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+}

@@ -16,6 +16,7 @@ import {
 import {
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
@@ -27,6 +28,8 @@ export default function AITBoard() {
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [authError, setAuthError] = useState("");
+  const [showRedirect, setShowRedirect] = useState(false);
 
   const [newAnnouncement, setNewAnnouncement] = useState({
     title: "",
@@ -39,7 +42,38 @@ export default function AITBoard() {
 
   // Login
   const login = async () => {
-    await signInWithPopup(auth, provider);
+    setAuthError("");
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (err) {
+      console.error("Admin login failed:", err);
+      const reasons = {
+        "auth/unauthorized-domain":
+          "This website's address is not authorised in Firebase (Authentication > Settings > Authorized domains).",
+        "auth/operation-not-allowed":
+          "Google sign-in is not enabled in Firebase (Authentication > Sign-in method).",
+        "auth/popup-blocked": "The browser blocked the sign-in window. Allow pop-ups for this site and try again.",
+        "auth/network-request-failed": "Network problem. Check your connection and try again.",
+        "auth/invalid-api-key": "The Firebase API key is missing or wrong in this build.",
+        "auth/api-key-not-valid.-please-pass-a-valid-api-key.": "The Firebase API key is missing or wrong in this build.",
+      };
+      if (err && err.code === "auth/cancelled-popup-request") return;
+      reasons["auth/popup-closed-by-user"] =
+        "The sign-in window closed before it finished. If it shut by itself, the site's address may not be authorised in Firebase, or a pop-up blocker closed it. You can also try the other sign-in method below.";
+      setAuthError(reasons[err && err.code] || `Sign-in failed (${(err && err.code) || "unknown error"}).`);
+      setShowRedirect(true);
+    }
+  };
+
+  // Same Google sign-in, but the whole page goes to Google and comes back (no pop-up window)
+  const loginRedirect = async () => {
+    setAuthError("");
+    try {
+      await signInWithRedirect(auth, provider);
+    } catch (err) {
+      console.error("Redirect login failed:", err);
+      setAuthError(`Sign-in failed (${(err && err.code) || "unknown error"}).`);
+    }
   };
 
   // Logout
@@ -188,19 +222,36 @@ export default function AITBoard() {
       {/* Board members sign in here to post; kept small so visitors see the notices first */}
       <footer className="board-admin">
         {!user ? (
-          <button className="auth-btn" onClick={login}>
-            Admin login
-          </button>
+          <>
+            <button className="auth-btn" onClick={login}>
+              Admin login
+            </button>
+            {showRedirect && (
+              <button className="auth-btn" onClick={loginRedirect}>
+                Sign in without a pop-up
+              </button>
+            )}
+          </>
         ) : (
           <>
             <span>
               {user.email}
               {isAdmin && <span className="admin-badge">ADMIN</span>}
             </span>
+            {!isAdmin && (
+              <span className="board-error" role="status">
+                This account is not the admin account, so posting is disabled. Sign in with {ADMIN_EMAIL}.
+              </span>
+            )}
             <button className="auth-btn" onClick={logout}>
               Logout
             </button>
           </>
+        )}
+        {authError && (
+          <p className="board-error" role="alert">
+            {authError}
+          </p>
         )}
       </footer>
     </section>
