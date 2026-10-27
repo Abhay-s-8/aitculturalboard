@@ -22,12 +22,52 @@
       name="description"
       content="The official Cultural Board of AIT Pune - events, music, performances and the team behind Aakriti and Amethyst."
     />
+    <link rel="canonical" href="https://aitculturalboard.in/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Cultural Board AIT Pune" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://aitculturalboard.in/" />
     <meta property="og:title" content="Cultural Board AIT Pune" />
     <meta property="og:description" content="Events, music and performances from the AIT Pune Cultural Board." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <!-- Social previews need an absolute URL; the image is 1200x630. -->
+    <meta property="og:image" content="https://aitculturalboard.in/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Members of the AIT Pune Cultural Board on stage" />
     <meta name="twitter:card" content="summary_large_image" />
-    
+    <meta name="twitter:title" content="Cultural Board AIT Pune" />
+    <meta name="twitter:description" content="Events, music and performances from the AIT Pune Cultural Board." />
+    <meta name="twitter:image" content="https://aitculturalboard.in/og-image.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Cultural Board AIT Pune",
+        "alternateName": ["AIT Cultural and Music Board", "सांस्कृतिक मंडल"],
+        "url": "https://aitculturalboard.in/",
+        "logo": "https://aitculturalboard.in/logo512.png",
+        "image": "https://aitculturalboard.in/og-image.jpg",
+        "description": "The official Cultural and Music Board of the Army Institute of Technology, Pune - organisers of Aakriti and Amethyst.",
+        "email": "culturalboardait85@gmail.com",
+        "sameAs": [
+          "https://www.instagram.com/culturalboard_ait/",
+          "https://www.linkedin.com/company/cultural-board/",
+          "https://www.aitpune.com/CulturalMusicClub.aspx"
+        ],
+        "parentOrganization": {
+          "@type": "CollegeOrUniversity",
+          "name": "Army Institute of Technology, Pune",
+          "url": "https://www.aitpune.com/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pune",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+          }
+        }
+      }
+    </script>
+
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -44,8 +84,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Cultural Board AIT Pune</title>
-
-    <script async defer src="https://apis.google.com/js/api.js"  crossorigin="anonymous"></script>
 
 
   </head>

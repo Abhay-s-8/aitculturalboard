@@ -10,6 +10,15 @@ export default function AakritiLayout({ title, description, children }) {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  // index.html points the canonical URL at the home page; point it at this page instead.
+  useEffect(() => {
+    const link = document.querySelector('link[rel="canonical"]');
+    if (!link) return;
+    const prev = link.getAttribute("href");
+    link.setAttribute("href", `https://aitculturalboard.in${pathname}`);
+    return () => link.setAttribute("href", prev);
+  }, [pathname]);
+
   useEffect(() => {
     const prev = document.title;
     document.title = title;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import character from "../IMAGE/contact-character.webp";
@@ -54,6 +54,7 @@ const Contact = () => {
 
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const lastSent = useRef(0);
 
   // Start fresh: empty form and no leftover status message.
   // Fired when someone opens Contact Us again (see navbar.jsx) and a few seconds after sending.
@@ -80,6 +81,16 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    // Honeypot: real visitors never see or fill this field, bots usually do.
+    if (e.target.elements.website && e.target.elements.website.value) return;
+
+    // Client-side cooldown (a speed bump only; set the real limit in the EmailJS dashboard).
+    if (Date.now() - lastSent.current < 30000) {
+      setStatus(" Please wait a few seconds before sending another message.");
+      return;
+    }
+    lastSent.current = Date.now();
     setLoading(true);
 
     emailjs
@@ -87,10 +98,10 @@ const Contact = () => {
         "service_52h9l3f",     // Your service ID
         "template_lk5yv7m",    // Your template ID
         {
-          user_name: formData.name,
-          user_email: formData.email,
-          user_phone: formData.phone,
-          user_message: formData.message
+          user_name: formData.name.trim().slice(0, 100),
+          user_email: formData.email.trim().slice(0, 254),
+          user_phone: formData.phone.trim().slice(0, 20),
+          user_message: formData.message.trim().slice(0, 2000)
         },
         "JtwaJwXne2ybl59cA"    // Your public key
       )
@@ -133,6 +144,7 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               autoComplete="name"
+              maxLength={100}
               required
             />
           </label>
@@ -145,6 +157,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               autoComplete="email"
+              maxLength={254}
               required
             />
           </label>
@@ -157,6 +170,7 @@ const Contact = () => {
               value={formData.phone}
               onChange={handleChange}
               autoComplete="tel"
+              maxLength={20}
             />
           </label>
           <label>
@@ -165,10 +179,20 @@ const Contact = () => {
               name="message"
               placeholder="Your Question"
               rows={2}
+              maxLength={2000}
               value={formData.message}
               onChange={handleChange}
             />
           </label>
+
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+          />
 
           <button type="submit" disabled={loading}>
             {loading ? "Sending…" : "Send Message"}

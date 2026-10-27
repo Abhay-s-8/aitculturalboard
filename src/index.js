@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 // The Aakriti festival pages are loaded only when visited.
 const AakritiPage = lazy(() => import('./aakriti/AakritiPage'));
 const EventPage = lazy(() => import('./aakriti/EventPage'));
+const NotFound = lazy(() => import('./component/NotFound'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +19,7 @@ root.render(
           <Route path="/" element={<App />} />
           <Route path="/aakriti" element={<AakritiPage />} />
           <Route path="/aakriti/:slug" element={<EventPage />} />
-          <Route path="*" element={<App />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
