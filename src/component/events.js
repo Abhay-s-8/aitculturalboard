@@ -17,7 +17,7 @@ const events = [
     desc: "Welcoming the new batch with fun, performances, and celebration.",
   },
   {
-    title: "Cultural Akriti",
+    title: "Cultural Aakriti",
     to: "/aakriti",
     featured: true,
     img: DANCE,
@@ -61,7 +61,7 @@ const events = [
   return (
     <div className="events-container"  style={{color:props.mode ? "#ffffff" : "#000"}}>
       <span className="eyebrow">02 — Events</span>
-      <h1 className="events-title">Our Events</h1>
+      <h2 className="events-title">Our Events</h2>
       <div className="events-grid">
         {events.map((event, index) => (
           <div className={`event-card${event.featured ? " is-featured" : ""}`} style={{color:props.mode ? "#dededeff" : "#1e1e1e"}} key={index}>

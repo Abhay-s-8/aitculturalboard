@@ -51,13 +51,13 @@ export default function BlurScroll() {
   return (
     <section className="container">
       {lines.map((text, i) => (
-        <h1
+        <p
           key={i}
           ref={(el) => (linesRef.current[i] = el)}
           className={`line ${/[\u0900-\u097F]/.test(text) ? "hindi" : ""}`}
         >
           {text}
-        </h1>
+        </p>
       ))}
     </section>
   );

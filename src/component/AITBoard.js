@@ -87,7 +87,8 @@ export default function AITBoard() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setIsAdmin(currentUser?.email === ADMIN_EMAIL);
+      // UI gate only - real enforcement is in firestore.rules
+      setIsAdmin(currentUser?.email === ADMIN_EMAIL && currentUser?.emailVerified === true);
     });
 
     return () => unsub();
@@ -116,8 +117,8 @@ export default function AITBoard() {
     if (!newAnnouncement.title.trim()) return;
 
     await addDoc(collection(db, "announcements"), {
-      title: newAnnouncement.title,
-      message: newAnnouncement.message,
+      title: newAnnouncement.title.trim().slice(0, 100),
+      message: newAnnouncement.message.trim().slice(0, 1000),
       date: newAnnouncement.date,
       createdAt: serverTimestamp(),
     });
@@ -157,6 +158,7 @@ export default function AITBoard() {
           <input
             placeholder="Title"
             aria-label="Title"
+            maxLength={100}
             value={newAnnouncement.title}
             onChange={(e) =>
               setNewAnnouncement({ ...newAnnouncement, title: e.target.value })
@@ -165,6 +167,7 @@ export default function AITBoard() {
           <input
             placeholder="Message"
             aria-label="Message"
+            maxLength={1000}
             value={newAnnouncement.message}
             onChange={(e) =>
               setNewAnnouncement({ ...newAnnouncement, message: e.target.value })

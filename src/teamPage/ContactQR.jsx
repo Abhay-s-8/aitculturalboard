@@ -1,5 +1,5 @@
 import React from "react";
-import qr from "../IMAGE/culturalboard_ait_qr (1).png"; 
+import qr from "../IMAGE/culturalboard-ait-qr.webp";
 import "./ContactQR.css";
 
 const ContactQR = ({ show, onClose }) => {

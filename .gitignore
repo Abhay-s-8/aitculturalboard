@@ -21,3 +21,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# environment variables / secrets (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+serviceAccount*.json
+firebase-debug.log
+.firebase/
